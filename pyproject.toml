@@ -4,6 +4,7 @@ version = "0.1.0"
 description = "Fintual portfolio code challenge"
 authors = ["joyanedel <iamjoyanedel@gmai.com>"]
 readme = "README.md"
+packages = [{ include = "src" }]
 
 [tool.poetry.dependencies]
 python = "^3.12"
@@ -11,6 +12,12 @@ python = "^3.12"
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.3.2"
 ruff = "^0.6.3"
+
+[tool.pytest.ini_options]
+minversion = "6.0"
+pythonpath = "src"
+addopts = ["--import-mode=importlib"]
+testpaths = ["tests"]
 
 [build-system]
 requires = ["poetry-core"]

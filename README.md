@@ -10,16 +10,18 @@ Assuming you have python installed in your machine and poetry as well, you can r
 poetry install
 ```
 
-```bash
-poetry shell
-python src/main.py
-```
-
 ## How to run the tests
 
 To run the tests you can run the following command:
 
 ```bash
-poetry shell
-pytest
+poetry run pytest
+```
+
+## How to verify code style is correct
+
+To verify the code style is correct you can run the following command:
+
+```bash
+poetry run ruff check
 ```
