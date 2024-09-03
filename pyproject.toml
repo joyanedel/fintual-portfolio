@@ -1,0 +1,25 @@
+[tool.poetry]
+name = "fintual-portfolio"
+version = "0.1.0"
+description = "Fintual portfolio code challenge"
+authors = ["joyanedel <iamjoyanedel@gmai.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.3.2"
+ruff = "^0.6.3"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.ruff]
+line-length = 120
+indent-width = 4
+target-version = "py312"
+
+[tool.ruff.format]
+line-ending = "auto"
