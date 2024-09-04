@@ -6,7 +6,10 @@ from functools import cache
 
 
 @cache
-def load_portfolio():
+def generate_random_portfolio():
+    """
+    Generate a portfolio with random prices set for AAPL, GOOGL, MSFT and FNTL tickers
+    """
     dates_from_2021_to_now = generate_dates(date(2021, 1, 1), date.today())
     dates_length = len(dates_from_2021_to_now)
 

@@ -4,7 +4,7 @@ from typing import Annotated
 from fastapi import FastAPI, Query
 
 from src.schemes import StatisticValue
-from src.utils import load_portfolio
+from src.utils import generate_random_portfolio
 
 app = FastAPI()
 
@@ -21,7 +21,7 @@ async def get_stock_statistics(
     ] = [StatisticValue.PROFIT],
 ):
     result = dict()
-    portfolio = load_portfolio()
+    portfolio = generate_random_portfolio()
     if "profit" in includes:
         result["profit"] = portfolio.profit(start_date, end_date)
     if "annualized_return" in includes:
