@@ -10,6 +10,18 @@ Assuming you have python installed in your machine and poetry as well, you can r
 poetry install
 ```
 
+After that you can run the following command to start the server:
+
+```bash
+poetry run fastapi dev src/server.py
+```
+
+and access the openapi documentation in the following url:
+
+```
+http://localhost:8000/docs
+```
+
 ## How to run the tests
 
 To run the tests you can run the following command:

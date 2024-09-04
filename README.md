@@ -10,7 +10,7 @@ Access the backend folder and run the following commands:
 
 ```bash
 poetry install
-poetry run fastapi run
+poetry run fastapi dev src/server.py
 ```
 
 ### Frontend
