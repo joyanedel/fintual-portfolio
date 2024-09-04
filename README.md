@@ -21,3 +21,10 @@ Access the frontend folder and run the following commands:
 npm install
 npm run start
 ```
+
+or if you are using pnpm
+
+```bash
+pnpm install
+pnpm dev
+```
