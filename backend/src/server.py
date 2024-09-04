@@ -1,27 +1,31 @@
+from __future__ import annotations
+from datetime import date
 from typing import Annotated
-from enum import StrEnum
 from fastapi import FastAPI, Query
+
+from src.schemes import StatisticValue
+from src.utils import load_portfolio
 
 app = FastAPI()
 
 
-class StatisticValue(StrEnum):
-    PROFIT = "profit"
-    ANNUALIZED_RETURN = "annualized_return"
-    PERCENT_RETURN = "percent_return"
-
-
-@app.get("/")
+@app.get(
+    "/",
+    description="Compute statistics related to historical stock prices. For now it assumes that a person has bought 1 stock per ticker which are preloaded from a csv file. Available historical prices are from 2024-09-01 to 2024-09-10",
+)
 async def get_stock_statistics(
+    start_date: date,
+    end_date: date,
     includes: Annotated[
         list[StatisticValue], Query(title="Includes", description="Statistics to include in the result")
     ] = [StatisticValue.PROFIT],
 ):
     result = dict()
+    portfolio = load_portfolio()
     if "profit" in includes:
-        result["profit"] = 123.4
+        result["profit"] = portfolio.profit(start_date, end_date)
     if "annualized_return" in includes:
-        result["annualized_return"] = 1.0
+        result["annualized_return"] = portfolio.annualized_return(start_date, end_date)
     if "percent_return" in includes:
-        result["percent_return"] = 1.0
+        result["percent_return"] = portfolio.percent_return(start_date, end_date)
     return result

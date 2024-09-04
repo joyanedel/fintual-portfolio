@@ -2,7 +2,7 @@
 
 This is a repository made to develop the fintual portfolio code challenge
 
-## How to run the code
+## How to run the code in development mode
 
 Assuming you have python installed in your machine and poetry as well, you can run the following command to install the dependencies:
 
@@ -10,7 +10,7 @@ Assuming you have python installed in your machine and poetry as well, you can r
 poetry install
 ```
 
-After that you can run the following command to start the server:
+After that you can run the following command to start the server in development mode:
 
 ```bash
 poetry run fastapi dev src/server.py
@@ -20,6 +20,14 @@ and access the openapi documentation in the following url:
 
 ```
 http://localhost:8000/docs
+```
+
+## How to run the code in production mode
+
+To run the code in production mode you can run the following command:
+
+```bash
+poetry run fastapi run src/server.py
 ```
 
 ## How to run the tests

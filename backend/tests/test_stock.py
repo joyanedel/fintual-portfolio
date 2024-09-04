@@ -1,11 +1,9 @@
-import pytest
-from pathlib import Path
 from datetime import date
+import pytest
 
 from src.models import Portfolio, Stock
 from src.files import read_lines_from_file
-
-STOCK_FIXTURES_PATH = Path(__file__).parent
+from src.constants import STATIC_FILES_PATH
 
 
 @pytest.fixture(scope="session")
@@ -14,10 +12,10 @@ def portfolio_fixture():
         _date, _, _, price = line.split(",")
         return (date.fromisoformat(_date), float(price))
 
-    aapl_fixture = map(__parse_stock_line, read_lines_from_file(STOCK_FIXTURES_PATH / "aapl_fixture.csv")[1:])
-    fntl_fixture = map(__parse_stock_line, read_lines_from_file(STOCK_FIXTURES_PATH / "fntl_fixture.csv")[1:])
-    googl_fixture = map(__parse_stock_line, read_lines_from_file(STOCK_FIXTURES_PATH / "googl_fixture.csv")[1:])
-    msft_fixture = map(__parse_stock_line, read_lines_from_file(STOCK_FIXTURES_PATH / "msft_fixture.csv")[1:])
+    aapl_fixture = map(__parse_stock_line, read_lines_from_file(STATIC_FILES_PATH / "aapl_fixture.csv")[1:])
+    fntl_fixture = map(__parse_stock_line, read_lines_from_file(STATIC_FILES_PATH / "fntl_fixture.csv")[1:])
+    googl_fixture = map(__parse_stock_line, read_lines_from_file(STATIC_FILES_PATH / "googl_fixture.csv")[1:])
+    msft_fixture = map(__parse_stock_line, read_lines_from_file(STATIC_FILES_PATH / "msft_fixture.csv")[1:])
 
     aapl_stock = Stock(ticker="AAPL", history=dict(aapl_fixture))
     fntl_stock = Stock(ticker="FNTL", history=dict(fntl_fixture))
