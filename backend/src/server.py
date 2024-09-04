@@ -2,11 +2,14 @@ from __future__ import annotations
 from datetime import date
 from typing import Annotated
 from fastapi import FastAPI, Query
+from fastapi.middleware.cors import CORSMiddleware
 
 from src.schemes import StatisticValue
 from src.utils import generate_random_portfolio
 
 app = FastAPI()
+
+app.add_middleware(CORSMiddleware, allow_origins=["http://localhost:3000"])
 
 
 @app.get(
